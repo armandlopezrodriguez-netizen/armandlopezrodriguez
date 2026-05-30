@@ -20,7 +20,7 @@
       background: #ffffff;
       color: #111111;
       font-size: 15px;
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
     a {
@@ -33,31 +33,32 @@
       top: 0;
       left: 0;
       width: 100%;
-      padding: 28px 36px;
+      padding: 28px 38px;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(8px);
     }
 
     .name {
-      font-size: 14px;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: none;
     }
 
     nav {
       display: flex;
-      gap: 22px;
-      font-size: 13px;
-      letter-spacing: 0.02em;
+      gap: 24px;
+      font-size: 14px;
+      align-items: center;
     }
 
     .language {
       cursor: pointer;
-      opacity: 0.55;
+      opacity: 0.45;
     }
 
     .language.active {
@@ -68,116 +69,87 @@
       padding-top: 110px;
     }
 
-    .home {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 80px 24px;
-      text-align: center;
-    }
-
-    .home h1 {
-      font-weight: normal;
-      font-size: clamp(34px, 6vw, 82px);
-      line-height: 0.95;
-      letter-spacing: -0.04em;
-      margin-bottom: 28px;
-    }
-
-    .home p {
-      max-width: 560px;
-      font-size: 15px;
-      color: #444;
-    }
-
-    .featured-image {
-      width: min(86vw, 980px);
-      margin-top: 56px;
-      aspect-ratio: 16 / 9;
-      background: #eeeeee;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #888;
-      font-size: 13px;
-    }
-
-    .projects {
-      padding: 80px 36px 140px;
+    .projects-home {
+      padding: 20px 38px 120px;
     }
 
     .project-card {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-      margin-bottom: 120px;
+      min-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       cursor: pointer;
+      gap: 34px;
     }
 
-    .project-card img,
+    .project-card h1 {
+      font-weight: 400;
+      font-size: clamp(42px, 7vw, 92px);
+      letter-spacing: -0.06em;
+      line-height: 0.95;
+    }
+
+    .project-image,
     .project-placeholder {
-      width: 100%;
+      width: min(72vw, 920px);
       aspect-ratio: 16 / 9;
-      object-fit: cover;
       background: #eeeeee;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #888;
       font-size: 13px;
+      object-fit: cover;
     }
 
-    .project-card h2 {
-      font-weight: normal;
-      font-size: clamp(26px, 4vw, 56px);
-      letter-spacing: -0.035em;
+    .project-card:hover .project-placeholder,
+    .project-card:hover .project-image {
+      opacity: 0.82;
     }
 
-    .project-card p {
-      max-width: 620px;
-      color: #444;
-    }
-
-    .project-page {
+    .project-page,
+    .bio-page {
       min-height: 100vh;
-      padding: 140px 36px 120px;
+      padding: 140px 38px 120px;
       display: none;
     }
 
-    .project-page.active {
+    .project-page.active,
+    .bio-page.active {
       display: block;
     }
 
     .project-layout {
       display: grid;
       grid-template-columns: 360px 1fr;
-      gap: 70px;
+      gap: 72px;
       align-items: start;
     }
 
     .project-text {
       position: sticky;
-      top: 120px;
+      top: 130px;
       max-width: 360px;
     }
 
     .project-text h1 {
-      font-weight: normal;
-      font-size: 34px;
-      line-height: 1;
-      letter-spacing: -0.035em;
-      margin-bottom: 24px;
+      font-weight: 400;
+      font-size: 46px;
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+      margin-bottom: 28px;
     }
 
     .project-text p {
-      color: #333;
+      color: #222;
       margin-bottom: 18px;
+      max-width: 340px;
     }
 
     .project-meta {
-      margin-top: 28px;
+      margin-top: 32px;
       color: #777;
       font-size: 13px;
     }
@@ -185,7 +157,7 @@
     .gallery {
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 30px;
     }
 
     .gallery img,
@@ -198,31 +170,33 @@
       justify-content: center;
       color: #888;
       font-size: 13px;
-    }
-
-    .bio-contact {
-      padding: 120px 36px;
-      max-width: 760px;
-    }
-
-    .bio-contact h2 {
-      font-weight: normal;
-      font-size: 34px;
-      letter-spacing: -0.035em;
-      margin-bottom: 26px;
-    }
-
-    .bio-contact p {
-      margin-bottom: 18px;
-      color: #333;
+      object-fit: cover;
     }
 
     .back {
       display: inline-block;
-      margin-bottom: 42px;
+      margin-bottom: 44px;
       font-size: 13px;
       color: #666;
       cursor: pointer;
+    }
+
+    .bio-content {
+      max-width: 720px;
+      margin-top: 80px;
+    }
+
+    .bio-content h1 {
+      font-weight: 400;
+      font-size: clamp(42px, 6vw, 78px);
+      letter-spacing: -0.06em;
+      margin-bottom: 38px;
+    }
+
+    .bio-content p {
+      margin-bottom: 20px;
+      color: #222;
+      font-size: 17px;
     }
 
     .en {
@@ -247,28 +221,42 @@
       header {
         padding: 22px 20px;
         flex-direction: column;
-        gap: 12px;
+        gap: 14px;
+      }
+
+      .name {
+        font-size: 18px;
       }
 
       nav {
-        gap: 14px;
+        gap: 16px;
         flex-wrap: wrap;
+        font-size: 13px;
       }
 
       main {
         padding-top: 130px;
       }
 
-      .projects,
+      .projects-home,
       .project-page,
-      .bio-contact {
+      .bio-page {
         padding-left: 20px;
         padding-right: 20px;
       }
 
+      .project-card {
+        min-height: 76vh;
+      }
+
+      .project-image,
+      .project-placeholder {
+        width: 100%;
+      }
+
       .project-layout {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 40px;
       }
 
       .project-text {
@@ -276,7 +264,12 @@
         max-width: 100%;
       }
 
-      .gallery-placeholder {
+      .project-text p {
+        max-width: 100%;
+      }
+
+      .gallery-placeholder,
+      .gallery img {
         min-height: 300px;
       }
     }
@@ -286,50 +279,30 @@
   <header>
     <a href="#" class="name" onclick="showHome()">Armand López Rodríguez</a>
     <nav>
-      <a href="#projects" onclick="showHome()"><span class="es">Proyectos</span><span class="en">Projects</span></a>
-      <a href="#bio" onclick="showHome()">Bio</a>
-      <a href="mailto:armandlopezrodriguez@gmail.com">Contacto</a>
+      <a href="#" onclick="showHome()"><span class="es">Proyectos</span><span class="en">Projects</span></a>
+      <a href="#" onclick="openBio()">Bio</a>
+      <a href="mailto:armandlopezrodriguez@gmail.com"><span class="es">Contacto</span><span class="en">Contact</span></a>
       <span class="language active" id="lang-es" onclick="setLanguage('es')">ES</span>
       <span class="language" id="lang-en" onclick="setLanguage('en')">EN</span>
     </nav>
   </header>
 
   <main id="home-content">
-    <section class="home">
-      <h1>Yo soy “Yo”</h1>
-      <p class="es">Arte y autopercepción desde la consciencia del cuerpo a través de la tecnología.</p>
-      <p class="en">Art and self-perception through bodily consciousness and technology.</p>
-      <div class="featured-image">Imagen principal / Main image</div>
-    </section>
-
-    <section class="projects" id="projects">
+    <section class="projects-home">
       <article class="project-card" onclick="openProject('yo-soy-yo')">
-        <div class="project-placeholder">Imagen del proyecto / Project image</div>
-        <h2>Yo soy “Yo”</h2>
-        <p class="es">Instalación audiovisual interactiva que transforma la imagen del cuerpo del espectador en tiempo real.</p>
-        <p class="en">Interactive audiovisual installation that transforms the viewer’s body image in real time.</p>
+        <h1>Yo soy “Yo”</h1>
+        <div class="project-placeholder">Imagen principal / Main image</div>
       </article>
 
       <article class="project-card" onclick="openProject('reconstruyendose')">
-        <div class="project-placeholder">Imagen del proyecto / Project image</div>
-        <h2>Reconstruyendo-se</h2>
-        <p class="es">Proyecto artístico sobre identidad, memoria, cuerpo y reconstrucción simbólica.</p>
-        <p class="en">Art project about identity, memory, body and symbolic reconstruction.</p>
+        <h1>Reconstruyendo-se</h1>
+        <div class="project-placeholder">Imagen principal / Main image</div>
       </article>
 
       <article class="project-card" onclick="openProject('cartografia')">
-        <div class="project-placeholder">Imagen del proyecto / Project image</div>
-        <h2>Cartografía materna</h2>
-        <p class="es">Obra vinculada a la memoria autobiográfica, la infancia y las estructuras afectivas del cuidado.</p>
-        <p class="en">Work connected to autobiographical memory, childhood and affective structures of care.</p>
+        <h1>Cartografía materna</h1>
+        <div class="project-placeholder">Imagen principal / Main image</div>
       </article>
-    </section>
-
-    <section class="bio-contact" id="bio">
-      <h2>Bio</h2>
-      <p class="es">Armand López Rodríguez es artista visual. Su práctica investiga la autopercepción, la identidad, la memoria, el cuerpo y la mediación tecnológica como herramientas para cuestionar la imagen que el individuo reconoce como propia.</p>
-      <p class="en">Armand López Rodríguez is a visual artist. His practice explores self-perception, identity, memory, the body and technological mediation as tools to question the image through which the individual recognises themselves.</p>
-      <p><a href="mailto:armandlopezrodriguez@gmail.com">armandlopezrodriguez@gmail.com</a></p>
     </section>
   </main>
 
@@ -340,77 +313,4 @@
         <h1>Yo soy “Yo”</h1>
         <p class="es">Instalación audiovisual interactiva que explora la relación entre percepción, identidad y conciencia mediante la transformación visual del cuerpo del espectador en tiempo real.</p>
         <p class="en">Interactive audiovisual installation exploring the relationship between perception, identity and consciousness through the real-time visual transformation of the viewer’s body.</p>
-        <p class="es">La obra utiliza un sistema de cámara, ordenador y proyección que funciona como un circuito cerrado de percepción. El cuerpo aparece modificado, fragmentado o disuelto, cuestionando la estabilidad de la imagen con la que el sujeto se identifica.</p>
-        <p class="en">The work uses a camera, computer and projection system as a closed perceptual circuit. The body appears modified, fragmented or dissolved, questioning the stability of the image with which the subject identifies.</p>
-        <div class="project-meta">2026<br>Instalación audiovisual / Audiovisual installation</div>
-      </div>
-      <div class="gallery">
-        <div class="gallery-placeholder">Imagen 1 / Image 1</div>
-        <div class="gallery-placeholder">Imagen 2 / Image 2</div>
-        <div class="gallery-placeholder">Imagen 3 / Image 3</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="project-page" id="reconstruyendose">
-    <span class="back" onclick="showHome()">← Volver / Back</span>
-    <div class="project-layout">
-      <div class="project-text">
-        <h1>Reconstruyendo-se</h1>
-        <p class="es">Proyecto artístico sobre la reconstrucción de la identidad a partir del cuerpo, la memoria y la experiencia autobiográfica.</p>
-        <p class="en">Art project about the reconstruction of identity through the body, memory and autobiographical experience.</p>
-        <div class="project-meta">Proyecto / Project</div>
-      </div>
-      <div class="gallery">
-        <div class="gallery-placeholder">Imagen 1 / Image 1</div>
-        <div class="gallery-placeholder">Imagen 2 / Image 2</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="project-page" id="cartografia">
-    <span class="back" onclick="showHome()">← Volver / Back</span>
-    <div class="project-layout">
-      <div class="project-text">
-        <h1>Cartografía materna</h1>
-        <p class="es">Obra vinculada a la infancia, la memoria, la violencia materna y la resignificación simbólica de la experiencia personal.</p>
-        <p class="en">Work connected to childhood, memory, maternal violence and the symbolic resignification of personal experience.</p>
-        <div class="project-meta">Proyecto / Project</div>
-      </div>
-      <div class="gallery">
-        <div class="gallery-placeholder">Imagen 1 / Image 1</div>
-        <div class="gallery-placeholder">Imagen 2 / Image 2</div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    function openProject(id) {
-      document.getElementById('home-content').style.display = 'none';
-      document.querySelectorAll('.project-page').forEach(page => page.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      window.scrollTo(0, 0);
-    }
-
-    function showHome() {
-      document.getElementById('home-content').style.display = 'block';
-      document.querySelectorAll('.project-page').forEach(page => page.classList.remove('active'));
-    }
-
-    function setLanguage(lang) {
-      const body = document.body;
-      const es = document.getElementById('lang-es');
-      const en = document.getElementById('lang-en');
-      if (lang === 'en') {
-        body.classList.add('show-en');
-        es.classList.remove('active');
-        en.classList.add('active');
-      } else {
-        body.classList.remove('show-en');
-        en.classList.remove('active');
-        es.classList.add('active');
-      }
-    }
-  </script>
-</body>
-</html>
+        <p class="es">La obra utiliza un sistema de cámara, ordenador y proyección qu
