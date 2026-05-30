@@ -101,19 +101,17 @@
       line-height: 0.95;
     }
 
-    .project-placeholder {
-      width: min(66vw, 860px);
-      aspect-ratio: 16 / 9;
-      background: #eeeeee;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #888;
-      font-size: 13px;
+    .project-card img {
+      max-width: min(66vw, 860px);
+      max-height: 62vh;
+      width: auto;
+      height: auto;
+      display: block;
+      object-fit: contain;
       transition: opacity 0.25s ease;
     }
 
-    .project-card:hover .project-placeholder {
+    .project-card:hover img {
       opacity: 0.75;
     }
 
@@ -143,7 +141,7 @@
     .project-text h1 {
       font-family: 'IBM Plex Mono', monospace;
       font-weight: 300;
-      font-size: 46px;
+      font-size: 42px;
       line-height: 0.95;
       letter-spacing: -0.055em;
       margin-bottom: 28px;
@@ -161,22 +159,33 @@
       font-size: 13px;
     }
 
-    .gallery {
+    .visual-column {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 34px;
+      gap: 42px;
     }
 
-    .gallery-placeholder {
+    .visual-column img {
+      max-width: min(100%, 980px);
+      max-height: 92vh;
+      width: auto;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .video-wrapper {
       width: min(100%, 980px);
-      min-height: 560px;
-      background: #eeeeee;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #888;
-      font-size: 13px;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
     }
 
     .back {
@@ -195,8 +204,8 @@
     .simple-page-content h1 {
       font-weight: 400;
       font-size: clamp(28px, 3vw, 38px);
-      letter-spacing: -0.06em;
-      margin-bottom: 38px;
+      letter-spacing: -0.04em;
+      margin-bottom: 32px;
     }
 
     .simple-page-content p {
@@ -260,8 +269,9 @@
         min-height: 76vh;
       }
 
-      .project-placeholder {
-        width: 100%;
+      .project-card img {
+        max-width: 100%;
+        max-height: 58vh;
       }
 
       .project-layout {
@@ -278,8 +288,9 @@
         max-width: 100%;
       }
 
-      .gallery-placeholder {
-        min-height: 320px;
+      .visual-column img,
+      .video-wrapper {
+        max-width: 100%;
       }
     }
   </style>
@@ -300,22 +311,27 @@
     <section class="projects-home">
       <article class="project-card" onclick="openPage('yo-soy-yo')">
         <h1>Yo soy “Yo”</h1>
-        <div class="project-placeholder">Imagen principal / Main image</div>
+        <img src="img/yo-soy-yo-portada.jpg" alt="Yo soy Yo">
       </article>
 
       <article class="project-card" onclick="openPage('reconstruyendose')">
         <h1>Reconstruyendo-se</h1>
-        <div class="project-placeholder">Imagen principal / Main image</div>
+        <img src="img/reconstruyendose-portada.jpg" alt="Reconstruyendo-se">
       </article>
 
       <article class="project-card" onclick="openPage('autoservicio')">
         <h1>Autoservicio</h1>
-        <div class="project-placeholder">Imagen principal / Main image</div>
+        <img src="img/autoservicio-portada.jpg" alt="Autoservicio">
+      </article>
+
+      <article class="project-card" onclick="openPage('mis-doce-deseos')">
+        <h1>Mis Doce Deseos</h1>
+        <img src="img/misdocedeseos-portada.jpg" alt="Mis Doce Deseos">
       </article>
 
       <article class="project-card" onclick="openPage('cartografia')">
         <h1>Cartografía materna</h1>
-        <div class="project-placeholder">Imagen principal / Main image</div>
+        <img src="img/cartografia-portada.jpg" alt="Cartografía materna">
       </article>
     </section>
   </main>
@@ -331,10 +347,13 @@
         <p class="en">The work uses a camera, computer and projection system as a closed perceptual circuit. The body appears modified, fragmented or dissolved, questioning the stability of the image with which the subject identifies.</p>
         <div class="project-meta">2026<br>Instalación audiovisual / Audiovisual installation</div>
       </div>
-      <div class="gallery">
-        <div class="gallery-placeholder">Imagen 1 / Image 1</div>
-        <div class="gallery-placeholder">Imagen 2 / Image 2</div>
-        <div class="gallery-placeholder">Imagen 3 / Image 3</div>
+      <div class="visual-column">
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/hYUEDUJRH7w" title="Yo soy Yo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <img src="img/yo-soy-yo-01.jpg" alt="Yo soy Yo 01">
+        <img src="img/yo-soy-yo-02.jpg" alt="Yo soy Yo 02">
+        <img src="img/yo-soy-yo-03.jpg" alt="Yo soy Yo 03">
       </div>
     </div>
   </section>
@@ -348,9 +367,13 @@
         <p class="en">Art project about the reconstruction of identity through the body, memory and autobiographical experience.</p>
         <div class="project-meta">Proyecto / Project</div>
       </div>
-      <div class="gallery">
-        <div class="gallery-placeholder">Imagen 1 / Image 1</div>
-        <div class="gallery-placeholder">Imagen 2 / Image 2</div>
+      <div class="visual-column">
+        <img src="img/reconstruyendose-01.jpg" alt="Reconstruyendo-se 01">
+        <img src="img/reconstruyendose-02.jpg" alt="Reconstruyendo-se 02">
+        <img src="img/reconstruyendose-03.jpg" alt="Reconstruyendo-se 03">
+        <img src="img/reconstruyendose-04.jpg" alt="Reconstruyendo-se 04">
+        <img src="img/reconstruyendose-05.jpg" alt="Reconstruyendo-se 05">
+        <img src="img/reconstruyendose-06.jpg" alt="Reconstruyendo-se 06">
       </div>
     </div>
   </section>
@@ -364,9 +387,39 @@
         <p class="en">Art project about body, desire, consumption and identity through an autobiographical and symbolic approach.</p>
         <div class="project-meta">Proyecto / Project</div>
       </div>
-      <div class="gallery">
-        <div class="gallery-placeholder">Imagen 1 / Image 1</div>
-        <div class="gallery-placeholder">Imagen 2 / Image 2</div>
+      <div class="visual-column">
+        <img src="img/autoservicio-01.jpg" alt="Autoservicio 01">
+        <img src="img/autoservicio-02.jpg" alt="Autoservicio 02">
+        <img src="img/autoservicio-03.jpg" alt="Autoservicio 03">
+        <img src="img/autoservicio-04.jpg" alt="Autoservicio 04">
+        <img src="img/autoservicio-05.jpg" alt="Autoservicio 05">
+        <img src="img/autoservicio-06.jpg" alt="Autoservicio 06">
+        <img src="img/autoservicio-07.jpg" alt="Autoservicio 07">
+        <img src="img/autoservicio-08.jpg" alt="Autoservicio 08">
+        <img src="img/autoservicio-09.jpg" alt="Autoservicio 09">
+        <img src="img/autoservicio-10.jpg" alt="Autoservicio 10">
+      </div>
+    </div>
+  </section>
+
+  <section class="page" id="mis-doce-deseos">
+    <span class="back" onclick="showHome()">← Volver / Back</span>
+    <div class="project-layout">
+      <div class="project-text">
+        <h1>Mis Doce Deseos</h1>
+        <p class="es">Proyecto artístico vinculado a la infancia, el deseo, la memoria y la reconstrucción simbólica de la experiencia personal.</p>
+        <p class="en">Art project connected to childhood, desire, memory and the symbolic reconstruction of personal experience.</p>
+        <div class="project-meta">Proyecto / Project</div>
+      </div>
+      <div class="visual-column">
+        <img src="img/misdocedeseos-01.jpg" alt="Mis Doce Deseos 01">
+        <img src="img/misdocedeseos-02.jpg" alt="Mis Doce Deseos 02">
+        <img src="img/misdocedeseos-03.jpg" alt="Mis Doce Deseos 03">
+        <img src="img/misdocedeseos-04.jpg" alt="Mis Doce Deseos 04">
+        <img src="img/misdocedeseos-05.jpg" alt="Mis Doce Deseos 05">
+        <img src="img/misdocedeseos-06.jpg" alt="Mis Doce Deseos 06">
+        <img src="img/misdocedeseos-07.jpg" alt="Mis Doce Deseos 07">
+        <img src="img/misdocedeseos-08.jpg" alt="Mis Doce Deseos 08">
       </div>
     </div>
   </section>
@@ -380,9 +433,12 @@
         <p class="en">Work connected to childhood, memory, maternal violence and the symbolic resignification of personal experience.</p>
         <div class="project-meta">Proyecto / Project</div>
       </div>
-      <div class="gallery">
-        <div class="gallery-placeholder">Imagen 1 / Image 1</div>
-        <div class="gallery-placeholder">Imagen 2 / Image 2</div>
+      <div class="visual-column">
+        <img src="img/cartografia-01.jpg" alt="Cartografía materna 01">
+        <img src="img/cartografia-02.jpg" alt="Cartografía materna 02">
+        <img src="img/cartografia-03.jpg" alt="Cartografía materna 03">
+        <img src="img/cartografia-04.jpg" alt="Cartografía materna 04">
+        <img src="img/cartografia-05.jpg" alt="Cartografía materna 05">
       </div>
     </div>
   </section>
