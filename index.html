@@ -556,19 +556,50 @@
       document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
     }
 
-    function openPage(id) {
+    function getCurrentLanguage() {
+      if (document.body.classList.contains('show-ca')) return 'ca';
+      if (document.body.classList.contains('show-en')) return 'en';
+      return 'es';
+    }
+
+    function updateUrl(id = '') {
+      const lang = getCurrentLanguage();
+      const params = new URLSearchParams(window.location.search);
+
+      if (lang === 'es') {
+        params.delete('lang');
+      } else {
+        params.set('lang', lang);
+      }
+
+      const query = params.toString() ? '?' + params.toString() : '';
+      const hash = id ? '#' + id : '';
+      history.replaceState(null, null, window.location.pathname + query + hash);
+    }
+
+    function openPage(id, shouldUpdateUrl = true) {
       hideAllPages();
       document.getElementById(id).classList.add('active');
+
+      if (shouldUpdateUrl) {
+        updateUrl(id);
+      }
+
       window.scrollTo(0, 0);
     }
 
-    function showHome() {
+    function showHome(shouldUpdateUrl = true) {
       document.getElementById('home-content').style.display = 'block';
       document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+
+      if (shouldUpdateUrl) {
+        updateUrl('');
+      }
+
       window.scrollTo(0, 0);
     }
 
-    function setLanguage(lang) {
+    function setLanguage(lang, shouldUpdateUrl = true) {
       const body = document.body;
       const es = document.getElementById('lang-es');
       const ca = document.getElementById('lang-ca');
@@ -588,7 +619,26 @@
       } else {
         es.classList.add('active');
       }
+
+      if (shouldUpdateUrl) {
+        const activePage = document.querySelector('.page.active');
+        updateUrl(activePage ? activePage.id : '');
+      }
     }
+
+    window.addEventListener('load', () => {
+      const params = new URLSearchParams(window.location.search);
+      const lang = params.get('lang');
+      const hash = window.location.hash.replace('#', '');
+
+      if (lang === 'ca' || lang === 'en' || lang === 'es') {
+        setLanguage(lang, false);
+      }
+
+      if (hash && document.getElementById(hash)) {
+        openPage(hash, false);
+      }
+    });
   </script>
 </body>
 </html>
