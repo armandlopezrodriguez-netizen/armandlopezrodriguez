@@ -358,7 +358,7 @@
     <div class="project-layout">
       <div class="project-text">
 <h1><span class="es">Yo soy “Yo”</span><span class="ca">Jo soc “Jo”</span><span class="en">I am “Me”</span></h1>
-        <p class="es">Jo soc “Jo” investiga la relación entre percepción, identidad y conciencia a través de un dispositivo tecnológico que funciona como un espejo alterado. Mediante un sistema de cámara, proyección y procesamiento visual en tiempo real, la imagen del espectador se transforma progresivamente en una estructura de partículas en constante desaparición.</p>
+        <p class="es">Yo soy “Yo” investiga la relación entre percepción, identidad y conciencia a través de un dispositivo tecnológico que funciona como un espejo alterado. Mediante un sistema de cámara, proyección y procesamiento visual en tiempo real, la imagen del espectador se transforma progresivamente en una estructura de partículas en constante desaparición.</p>
         <p class="ca">Jo soc “Jo” investiga la relació entre percepció, identitat i consciència a través d’un dispositiu tecnològic que funciona com un mirall alterat. Mitjançant un sistema de càmera, projecció i processament visual en temps real, la imatge de l’espectador es transforma progressivament en una estructura de partícules en desaparició constant.</p>
         <p class="en">I am “Me” investigates the relationship between perception, identity and consciousness through a technological device that functions as an altered mirror. Through a system of camera, projection and real-time visual processing, the viewer’s image is progressively transformed into a structure of particles in constant disappearance.</p>
         <p class="es">La obra propone una experiencia de autoobservación en la que la imagen corporal deja de presentarse como una forma estable para revelar su carácter transitorio. A través de esta transformación, el proyecto cuestiona hasta qué punto la identidad que reconocemos como “Yo” depende de la percepción del propio cuerpo y de las imágenes con las que nos identificamos, abriendo un espacio de reflexión sobre la construcción del yo, la conciencia y la naturaleza cambiante de la experiencia humana.</p>
@@ -375,6 +375,9 @@
         </div>
         <div class="video-wrapper">
           <iframe src="https://www.youtube.com/embed/AW093OZ7gkw" title="Yo soy Yo 03" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="video-wrapper">
+          <iframe src="https://www.youtube.com/embed/6FFOoxnEn54" title="Yo soy Yo 04" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <img src="img/yo-soy-yo-01.jpg" alt="Yo soy Yo 01">
         <img src="img/yo-soy-yo-02.jpg" alt="Yo soy Yo 02">
@@ -553,50 +556,19 @@
       document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
     }
 
-    function getCurrentLanguage() {
-      if (document.body.classList.contains('show-ca')) return 'ca';
-      if (document.body.classList.contains('show-en')) return 'en';
-      return 'es';
-    }
-
-    function updateUrl(id = '') {
-      const lang = getCurrentLanguage();
-      const params = new URLSearchParams(window.location.search);
-
-      if (lang === 'es') {
-        params.delete('lang');
-      } else {
-        params.set('lang', lang);
-      }
-
-      const query = params.toString() ? '?' + params.toString() : '';
-      const hash = id ? '#' + id : '';
-      history.replaceState(null, null, window.location.pathname + query + hash);
-    }
-
-    function openPage(id, shouldUpdateUrl = true) {
+    function openPage(id) {
       hideAllPages();
       document.getElementById(id).classList.add('active');
-
-      if (shouldUpdateUrl) {
-        updateUrl(id);
-      }
-
       window.scrollTo(0, 0);
     }
 
-    function showHome(shouldUpdateUrl = true) {
+    function showHome() {
       document.getElementById('home-content').style.display = 'block';
       document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-
-      if (shouldUpdateUrl) {
-        updateUrl('');
-      }
-
       window.scrollTo(0, 0);
     }
 
-    function setLanguage(lang, shouldUpdateUrl = true) {
+    function setLanguage(lang) {
       const body = document.body;
       const es = document.getElementById('lang-es');
       const ca = document.getElementById('lang-ca');
@@ -616,26 +588,7 @@
       } else {
         es.classList.add('active');
       }
-
-      if (shouldUpdateUrl) {
-        const activePage = document.querySelector('.page.active');
-        updateUrl(activePage ? activePage.id : '');
-      }
     }
-
-    window.addEventListener('load', () => {
-      const params = new URLSearchParams(window.location.search);
-      const lang = params.get('lang');
-      const hash = window.location.hash.replace('#', '');
-
-      if (lang === 'ca' || lang === 'en' || lang === 'es') {
-        setLanguage(lang, false);
-      }
-
-      if (hash && document.getElementById(hash)) {
-        openPage(hash, false);
-      }
-    });
   </script>
 </body>
 </html>
